@@ -1,0 +1,26 @@
+[workspace]
+resolver = "3"
+members = [".", "pgage-derive"]
+
+[package]
+name = "pgage"
+version = "0.1.0-alpha.1"
+readme = "README.md"
+description = "Apache AGE support for Rust"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/quasi-coherent/pgage"
+authors = ["Daniel Donohue <d.michael.donohue@gmail.com>"]
+rust-version = "1.94.0"
+edition = "2024"
+
+[dependencies]
+nom = { version = "8.0.0", default-features = false, features = ["std"] }
+pgage-derive = { version = "=0.1.0", path = "pgage-derive" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["raw_value"] }
+sqlx = { version = "0.9.1", features = ["postgres"] }
+thiserror = { version = "2.0.21", default-features = false, features = ["std"] }
+
+[dev-dependencies]
+sqlx = { version = "0.9.1", features = ["runtime-tokio"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
